@@ -53,7 +53,7 @@ function initObject() {
     var meshFaceMaterial = new THREE.MeshFaceMaterial( materials );
   
     cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10),
-                      meshFaceMaterial})
+                      meshFaceMaterial
    		   );
     scene.add(cube);
 }

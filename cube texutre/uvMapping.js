@@ -8,7 +8,7 @@ function initRender() {
 	renderer.setClearColor(0x000000);
 }
 
-//创建照相机
+//创建场景
 function initScene() {
     scene = new THREE.Scene();
     //scene.fog = new THREE.Fog(0xffffff, 0.005, 3000);
@@ -32,7 +32,6 @@ function initLight() {
 
 //创建物体
 function initObject() {
-    //var texture = THREE.ImageUtils.loadTexture('http://wow.techbrood.com/uploads/160801/texture-atlas.jpg');
     var material = new THREE.MeshPhongMaterial({
         map: THREE.ImageUtils.loadTexture('http://wow.techbrood.com/uploads/160801/texture-atlas.jpg'),
         side: THREE.DoubleSide
@@ -68,17 +67,13 @@ function initObject() {
     geometry.faceVertexUvs[0][10] = [wood[0], wood[1], wood[3]];
     geometry.faceVertexUvs[0][11] = [wood[1], wood[2], wood[3]];
   
-    cube = new THREE.Mesh(geometry, material
-                      //new THREE.MeshPhongMaterial( { map: texture})
-   		   );
+    cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 }
 
 //渲染循环
 function render() {
     requestAnimationFrame( render );
-    //cube.rotation.x += .01;
-    //cube.rotation.y += .005;
     renderer.render( scene, camera );
 }
 

@@ -8,7 +8,7 @@ function initRender() {
 	renderer.setClearColor(0x000000);
 }
 
-//创建照相机
+//创建场景
 function initScene() {
     scene = new THREE.Scene();
 }

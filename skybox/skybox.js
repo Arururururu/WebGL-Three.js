@@ -12,12 +12,15 @@ function initRender() {
 function initScene() {
     scene = new THREE.Scene();
     //天空盒
-    var path = "http://wow.techbrood.com/uploads/1702/";       //设置路径
+    var path = "http://ae01.alicdn.com/kf/";       //设置路径
         var format = '.jpg';                        //设定格式
     var urls = [
-            path + 'clouds' + format, path + 'clouds' + format,
-            path + 'clouds' + format, path + 'water' + format,
-            path + 'clouds' + format, path + 'clouds' + format
+       path + 'HTB1GBRUhpooBKNjSZFPq6xa2XXa5'+ format,     
+       path + 'HTB1nqDXm98YBeNkSnb4q6yevFXa0'+ format,
+       path + 'HTB13tL9vkOWBuNjSsppq6xPgpXay' + format,
+       path + 'HTB1VELXvgaTBuNjSszfq6xgfpXac' + format,
+       path + 'HTB1PLbTvf9TBuNjy1zbq6xpepXao' + format,
+       path + 'HTB1bxWzmZuYBuNkSmRyq6AA3pXa8' + format
         ];
     var textureCube = new THREE.CubeTextureLoader().load( urls );
 

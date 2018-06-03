@@ -8,9 +8,20 @@ function initRender() {
 	renderer.setClearColor(0x000000);
 }
 
-//创建照相机
+//创建场景
 function initScene() {
     scene = new THREE.Scene();
+    //天空盒
+    var path = "http://wow.techbrood.com/uploads/1702/";       //设置路径
+        var format = '.jpg';                        //设定格式
+    var urls = [
+            path + 'clouds' + format, path + 'clouds' + format,
+            path + 'clouds' + format, path + 'water' + format,
+            path + 'clouds' + format, path + 'clouds' + format
+        ];
+    var textureCube = new THREE.CubeTextureLoader().load( urls );
+
+    scene.background = textureCube; //作为背景贴图
 }
 
 //创建照相机
@@ -21,7 +32,7 @@ function initCamera() {
     camera.lookAt(new THREE.Vector3(0, 0, 0));
     scene.add(camera);
 }
-
+// 添加光源
 function initLight() {
   light = new THREE.PointLight(0xffffff);
   //light.position.set(10, 15, 50);
@@ -29,18 +40,16 @@ function initLight() {
   scene.add(light);
 }
 
-//创建物体
+//创建天空盒
 function initObject() {
-    //var texture = THREE.ImageUtils.loadTexture('http://wow.techbrood.com/uploads/1702/crate.jpg');
     var materialArray = [];
     for (var i = 0; i < 6; i++)
             materialArray.push( new THREE.MeshBasicMaterial({
-                map: THREE.ImageUtils.loadTexture( '/uploads/1702/water.jpg'),
+                map: THREE.ImageUtils.loadTexture( 'http://wow.techbrood.com/uploads/1702/water.jpg'),
                 side: THREE.BackSide
             }));
     var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
     cube = new THREE.Mesh(new THREE.BoxGeometry(2000, 2000, 2000),skyMaterial
-                      //new THREE.MeshPhongMaterial( { map: texture})
    		   );
     scene.add(cube);
 }
@@ -68,7 +77,8 @@ function init() {
     initScene();
     initLight();
     initCamera();
-    initObject();
+    // 也可以填加一个超大的立方体作为天空盒
+    //initObject();  
     render();
     var controls = new THREE.OrbitControls( camera);
     window.addEventListener('resize', onResize, false);
